@@ -13,32 +13,63 @@
 <body>
 
     <main>
-        <section>
-            <nav>
-                <img src="assets/logo.png" alt="logo">
-                <ul>
-                    <li><a href="#our-services">Our Services</a></li>
-                    <li><a href="#why-us">Why Us</a></li>
-                    <li><a href="#testimonial">Testimonial</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><button>Registerf</button></li>
-                </ul>
+        <section class="section-1">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container-fluid">
+
+                    <a class="navbar__logo navbar-brand" href="#">
+                        <img src="assets/logo.png" alt="logo">
+                    </a>
+                    <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <!-- sidebar -->
+                    <div class="sidebar offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title fw-bold" id="offcanvasNavbarLabel">BRC</h5>
+                            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+
+                        <div class="offcanvas-body">
+                            <ul class="navbar-nav justify-content-end flex-grow-1 gap-3 pe-5">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#our-services">Our Services</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#why-us">Why Us</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#testimonial">Testimonial</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#faq">FAQ</a>
+                                </li>
+                                <li class="nav-item">
+                                    <button class="navbar__button btn btn-success">Register</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </nav>
 
-            <article>
-                <h1>Sewa & Rental Mobil Terbaik di kawasan Kediri</h1>
-                <p>
-                    Selamat datang di Binar Car Rental. Kami menyediakan mobil kualitas terbaik dengan harga terjangkau. Selalu siap melayani kebutuhanmu untuk sewa mobil selama 24 jam.
-                </p>
-                <button>Mulai Sewa Mobil</button>
+            <article class="section-1__article">
+                <div class="section-1__article_desc">
+                    <h1 class="fw-bold">Sewa & Rental Mobil Terbaik di kawasan Kediri</h1>
+                    <p>
+                        Selamat datang di Binar Car Rental. Kami menyediakan mobil kualitas terbaik dengan harga terjangkau. Selalu siap melayani kebutuhanmu untuk sewa mobil selama 24 jam.
+                    </p>
+                    <button class="section-1__article__btn btn btn-success">Mulai Sewa Mobil</button>
+                </div>
 
-                <img src="assets/img_car.png" alt="img_car">
-                <!-- <img src="assets/img_car.png" class="img-fluid" alt="img_car"> -->
+                <!-- <img src="assets/img_car.png" alt="img_car"> -->
+                <img src="assets/img_car.png" class="section-1__article__img img-fluid" alt="img_car">
             </article>
         </section>
 
         <section id="our-services">
-            <img src="assets/img_service.png" alt="img_service">
+            <img src="assets/img_service.png" class="img-fluid" alt="img_service">
 
             <article>
                 <h2>
