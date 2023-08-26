@@ -136,22 +136,58 @@
                 </div>
             </div>
         </section>
-        
-        <section id="testimonial">
-            <h1>Testimonial</h1>
-            <p>Berbagai review positif dari para pelanggan kami</p>
 
-            <div>
-                <div>
-                    <img src="assets/img/img_photo.png" alt="img_photo">
-                    <div>
-                        <img src="assets/icon/Rate.png" alt="Rate">
-                        <p>"“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod”"</p>
-                        <p>John Dee 32, Bromo</p>
+        <section id="testimonial" class="testimonial d-flex flex-column gap-5 align-items-center">
+            <div class="testimonial__tittle text-center">
+                <h1 class="fw-bold">Testimonial</h1>
+                <p>Berbagai review positif dari para pelanggan kami</p>
+            </div>
+
+            <div id="carouselExampleControls" class="testimonial__carousel carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="d-flex justify-content-center">
+                            <div class="testimonial__carousel-item">
+                                <img src="assets/img/img_photo.png" alt="img_photo" width="80px" height="80px">
+                                <div class="testimonial__carousel-item__text">
+                                    <img src="assets/icon/Rate.png" class="testimonial__carousel-item__star" alt="Rate">
+                                    <p>"“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod”"</p>
+                                    <p>John Dee 32, Bromo</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-center">
+                            <div class="testimonial__carousel-item">
+                                <img src="assets/img/img_photo.png" alt="img_photo" width="80px" height="80px">
+                                <div class="testimonial__carousel-item__text">
+                                    <img src="assets/icon/Rate.png" class="testimonial__carousel-item__star" alt="Rate">
+                                    <p>"“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod”"</p>
+                                    <p>John Dee 32, Bromo</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-center">
+                            <div class="testimonial__carousel-item">
+                                <img src="assets/img/img_photo.png" alt="img_photo" width="80px" height="80px">
+                                <div class="testimonial__carousel-item__text">
+                                    <img src="assets/icon/Rate.png" class="testimonial__carousel-item__star" alt="Rate">
+                                    <p>"“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod”"</p>
+                                    <p>John Dee 32, Bromo</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <img src="assets/icon/Left button.png" alt="left_button">
-                <img src="assets/icon/Right button.png" alt="right_button">
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <img src="assets/icon/Left button.png" alt="left_button">
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <img src="assets/icon/Right button.png" alt="right_button">
+                </button>
             </div>
         </section>
 
