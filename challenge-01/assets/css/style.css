@@ -55,10 +55,8 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    column-gap: 4rem;
-    margin-left: 6rem;
-    margin-right: 6rem;
-    margin-bottom: 4rem;
+    gap: 4rem;
+    margin: 6rem;
 }
 
 .section-2__image {
@@ -71,7 +69,7 @@ p {
     width: 50%;
     display: flex;
     flex-direction: column;
-    row-gap: .5rem;
+    gap: .5rem;
 }
 
 .section-2__article__list {
@@ -82,7 +80,7 @@ p {
 
 .section-2__article__list-item {
     display: flex;
-    column-gap: .5rem;
+    gap: .5rem;
     align-items: flex-start;
 }
 
@@ -91,8 +89,8 @@ p {
 .section-3 {
     display: flex;
     flex-direction: column;
-    row-gap: .5rem;
-    margin: 4rem 6rem;
+    gap: .5rem;
+    margin: 6rem;
 }
 
 .section-3__card-sect {
@@ -105,7 +103,7 @@ p {
 .section-3__card-sect__card {
     display: flex;
     flex-direction: column;
-    row-gap: 1rem;
+    gap: 1rem;
     border: 1px solid #D0D0D0;
     border-radius: .5rem;
     padding: 1.5rem;
@@ -124,7 +122,7 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 4rem 6rem;
+    margin: 6rem;
     border-radius: 1rem;
 }
 
@@ -143,12 +141,26 @@ p {
     width: 10rem;
 }
 
+/* faq section */
+
+.faq {
+    margin: 4rem 6rem;
+}
+
+.faq__title {
+    width: 40%;
+}
+
+.faq__accordion {
+    width: 60%;
+}
+
 /* footer */
 
 footer {
     display: flex;
-    margin: 4rem 6rem;
-    column-gap: 6rem;
+    margin: 6rem;
+    gap: 6rem;
     row-gap: .5rem;
 }
 
@@ -233,6 +245,20 @@ footer {
     }
 
     .section-5__card {
+        width: 100%;
+    }
+
+    .faq {
+        flex-direction: column;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .faq__title {
+        width: 100%;
+    }
+    
+    .faq__accordion {
         width: 100%;
     }
 
