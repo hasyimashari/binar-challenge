@@ -7,54 +7,45 @@ a {
     color: black;
 }
 
-p {
+p, h2, h6 {
     margin: 0;
     padding: 0;
 }
 
-/* section 1 */
-
-.navbar__button {
-    background-color: #5CB85F;
-}
+/* section-1 */
 
 .navbar__logo {
     padding-left: 3rem;
 }
 
+.navbar__button {
+    background-color: #5CB85F;
+}
+
 .section-1 {
     background-color: #F1F3FF;
     height: fit-content;
-    margin-bottom: 4rem;
+    margin-bottom: 6rem;
 }
 
-.section-1__article {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.section-1__desc {
     margin-top: 4rem;
 }
 
-.section-1__article__desc {
-    display: flex;
-    flex-direction: column;
-    justify-items: left;
+.section-1__desc__text {
     margin-left: 4rem;
     margin-right: 4rem;
     gap: .5rem;
 }
 
-.section-1__article__btn {
+.section-1__desc__btn {
     background-color: #5CB85F;
     width: 10rem;
 }
 
-/* section-2 */
+/* section-2 our-services*/
 
 .section-2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     gap: 4rem;
     margin: 6rem;
 }
@@ -65,58 +56,38 @@ p {
     left: 2rem;
 }
 
-.section-2__article {
+.section-2__desc {
     width: 50%;
-    display: flex;
-    flex-direction: column;
     gap: .5rem;
 }
 
-.section-2__article__list {
+.section-2__desc__list {
     list-style: none;
     position: relative;
     left: -2rem;
 }
 
-.section-2__article__list-item {
-    display: flex;
-    gap: .5rem;
-    align-items: flex-start;
-}
-
-/* section-3 */
+/* section-3 why-us*/
 
 .section-3 {
-    display: flex;
-    flex-direction: column;
     gap: .5rem;
     margin: 6rem;
-}
-
-.section-3__card-sect {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1rem;
 }
 
 .section-3__card-sect__card {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    width: 280px;
+    padding: 1.5rem;
     border: 1px solid #D0D0D0;
     border-radius: .5rem;
-    padding: 1.5rem;
-    width: 280px;
 }
 
-/* testimonial section */
+/* section-4 testimonial */
 
-.testimonial {
+.section-4 {
     margin: 6rem;
 }
 
-.testimonial__carousel {
+.section-4__carousel {
     background-color: #F1F3FF;
     border: 1px solid #D0D0D0;
     border-radius: .5rem;
@@ -125,18 +96,8 @@ p {
     padding-bottom: 6rem;
 }
 
-.testimonial__carousel-item {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
+.section-4__carousel-item {
     width: 60%;
-}
-
-.testimonial__carousel-item__text {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
 }
 
 /* section-5 */
@@ -144,19 +105,11 @@ p {
 .section-5 {
     background-color: #0D28A6;
     color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin: 6rem;
     border-radius: 1rem;
 }
 
 .section-5__card {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
-    text-align: center;
     padding: 6rem 4rem;
     width: 60%;
 }
@@ -166,44 +119,34 @@ p {
     width: 10rem;
 }
 
-/* faq section */
+/* section-6 faq */
 
-.faq {
+.section-6 {
     margin: 4rem 6rem;
 }
 
-.faq__title {
+.section-6__title {
     width: 40%;
 }
 
-.faq__accordion {
+.section-6__accordion {
     width: 60%;
 }
 
 /* footer */
 
 footer {
-    display: flex;
     margin: 6rem;
-    gap: 6rem;
-    row-gap: .5rem;
-}
-
-.section-footer {
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-    align-items: flex-start;
 }
 
 @media (max-width: 390px) {
 
-    .section-1__article {
+    .section-1__desc {
         position: relative;
         left: -.5rem;
     }
 
-    .section-1__article__desc {
+    .section-1__desc__text {
         margin-left: 1.5rem;
         margin-right: 1.5rem;
     }
@@ -212,17 +155,13 @@ footer {
         width: 100%;
     }
 
-    .testimonial__carousel-item {
+    .section-4__carousel-item {
         flex-direction: column;
         gap: 1rem;
         padding-top: 2rem;
     }
 
-    .testimonial__carousel-item__text {
-        gap: 1rem;
-    }
-
-    .testimonial__carousel-item__star {
+    .section-4__carousel-item__star {
         align-self: center;
     }
 
@@ -231,25 +170,23 @@ footer {
 @media (max-width:768px) {
 
     .sidebar {
-        max-width: 50%;
+        max-width: 75%;
     }
 
     .navbar__logo {
         padding-left: 1rem;
     }
 
-    .section-1__article {
+    .section-1__desc {
         flex-direction: column;
         margin-top: 2rem;
     }
 
-    .section-1__article__desc {
-        margin-bottom: 2rem;
-        margin-left: 2rem;
-        margin-right: 2rem;
+    .section-1__desc__text {
+        margin: 2rem;
     }
-    
-    .section-1__article__img {
+
+    .section-1__desc__img {
         margin-left: 2rem;
         width: 96%;
     }
@@ -261,7 +198,7 @@ footer {
         row-gap: 2rem;
     }
 
-    .section-2__article {
+    .section-2__desc {
         width: fit-content;
     }
 
@@ -275,16 +212,12 @@ footer {
         margin-right: 1rem;
     }
 
-    .section-3__card-sect {
-        justify-content: space-evenly;
-    }
-
-    .testimonial {
+    .section-4 {
         margin-left: 1rem;
         margin-right: 1rem;
     }
 
-    .testimonial__carousel {
+    .section-4__carousel {
         width: 100%;
         padding-top: 3rem;
         padding-bottom: 3rem;
@@ -299,17 +232,17 @@ footer {
         width: 100%;
     }
 
-    .faq {
+    .section-6 {
         flex-direction: column;
         margin-left: 1rem;
         margin-right: 1rem;
     }
 
-    .faq__title {
+    .section-6__title {
         width: 100%;
     }
     
-    .faq__accordion {
+    .section-6__accordion {
         width: 100%;
     }
 
