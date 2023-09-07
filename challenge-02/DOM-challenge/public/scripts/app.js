@@ -5,12 +5,18 @@ class App {
     this.carContainerElement = document.getElementById("cars-container");
   }
 
+  
   async init() {
     await this.load();
 
     // Register click listener
     this.clearButton.onclick = this.clear;
     this.loadButton.onclick = this.run;
+  }
+
+  async load() {
+    const cars = await Binar.listCars();
+    Car.init(cars);
   }
 
   run = () => {
@@ -20,11 +26,6 @@ class App {
       this.carContainerElement.appendChild(node);
     });
   };
-
-  async load() {
-    const cars = await Binar.listCars();
-    Car.init(cars);
-  }
 
   clear = () => {
     let child = this.carContainerElement.firstElementChild;
