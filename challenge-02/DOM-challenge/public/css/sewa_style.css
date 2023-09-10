@@ -7,7 +7,7 @@ a {
     color: black;
 }
 
-p, h4, h6 {
+p, h2, h6 {
     margin: 0;
     padding: 0;
 }
@@ -20,7 +20,23 @@ p, h4, h6 {
 
 .section-1 {
     background-color: #F1F3FF;
-    height: 35vh;
+    height: fit-content;
+}
+
+.section-1__desc {
+    margin-top: 4rem;
+}
+
+.section-1__desc__text {
+    margin-left: 4rem;
+    margin-right: 4rem;
+    padding-bottom: 6rem;
+    gap: .5rem;
+    width: 46%;
+}
+
+.section-1__desc__img {
+    width: 56%;
 }
 
 /* search section */
@@ -32,13 +48,10 @@ p, h4, h6 {
 .search-form {
     background-color: white;
     padding: 1.5rem;
+    gap: 1.5rem;
     border: 1px solid #D0D0D0;
     border-radius: .5rem;
     box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
-}
-
-.search-form__container {
-    gap: 1.5rem;
 }
 
 .search-form__input {
@@ -62,10 +75,28 @@ p, h4, h6 {
 
 .card-car__container {
     width: 20rem;
+    height: 34rem;
     padding: 1.5rem;
     border: 1px solid #D0D0D0;
     border-radius: .5rem;
-    gap: .75rem;
+    gap: 1rem;
+}
+
+.car-img__container {
+    max-height: 40%;
+}
+
+.car-img {
+    margin: auto;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: .5rem;
+}
+
+.desc-img__container {
+    max-height: 60%;
+    font-size: .85rem;
+    gap: .5rem;
 }
 
 /* footer */
@@ -76,7 +107,11 @@ footer {
 
 @media (max-width: 1200px) {
 
-    .search-form__container {
+    .section-1__desc__img {
+        padding-top: 6rem;
+    }
+
+    .search-form {
         width: 80%;
         flex-wrap: wrap;
     }
@@ -92,20 +127,21 @@ footer {
         padding-left: 1rem;
     }
 
-    .search-form {
-        padding-left: 4rem;
-        padding-right: 4rem;
-    }
-    
-    .search-form__container {
-        gap: 1.5rem;
+    .section-1__desc {
         flex-direction: column;
-        width: fit-content;
+        margin-top: 2rem;
     }
 
-    .result-section {
-        padding-left: 2rem;
-        padding-right: 2rem;
+    .section-1__desc__text {
+        padding-bottom: 0rem;
+        margin: 2rem;
+        width: fit-content
+    }
+
+    .section-1__desc__img {
+        margin-left: 2rem;
+        padding-top: 0rem;
+        width: 96%;
     }
 
     .search-form {
@@ -134,15 +170,21 @@ footer {
         max-width: 50%;
     }
 
-    .search-form {
-        padding-left: 2rem;
-        padding-right: 2rem;
+    .section-1__desc {
+        position: relative;
+        left: -.5rem;
     }
 
-    .search-form__container {
-        gap: 1.5rem;
+    .section-1__desc__text {
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
+    }
+
+    .search-form {
         width: fit-content;
         flex-direction: column;
+        padding-left: 2rem;
+        padding-right: 2rem;
     }
 
 }
