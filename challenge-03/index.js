@@ -1,6 +1,6 @@
 const express = require('express');
-const app = express();
 
+const app = express();
 const PORT = '3000';
 
 app.get('/', (req, res) => {
@@ -12,30 +12,41 @@ app.get('/cars', (req, res) => {
 });
 
 app.get('/cars/:id', (req, res) => {
+
     const idCar = req.params;
     console.log(idCar)
+
     res.status(200).send({ 'item' : `car ${idCar['id']}`});
 });
 
 app.use(express.json());
 
-app.post('/new-car', (req, res) => {
-    const params = req.body;
-    console.log('params', params);
+app.post('/cars', (req, res) => {
+
+    const body = req.body;
+    console.log('body', body);
+
     res.status(200).send({ 'new item' : "new cars"});
 });
 
-app.put('/update-car', (req, res) => {
-    const params = req.body;
-    console.log('params', params);
+app.put('/cars/:id', (req, res) => {
+
+    const idCar = req.params;
+    console.log(idCar)
+
+    const body = req.body;
+    console.log('body', body);
+
     res.status(200).send({ 'item' : "item updated"});
 });
 
-app.delete('/delete-car', (req, res) => {
+app.delete('/cars/:id', (req, res) => {
+
+    const idCar = req.params;
+    console.log(idCar)
+
     res.status(200).send({ 'item' : "item deleted"});
 });
-
-
 
 app.listen(PORT, () => {
     console.log(`open http://127.0.0.1:${PORT}`)
