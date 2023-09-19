@@ -63,7 +63,7 @@ cars.forEach( (i) => {
 
 ```
 
-filtered data:
+- filtered data:
 ``` JSON
 [
       {
