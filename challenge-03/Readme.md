@@ -8,7 +8,7 @@ create an http server with [express js](https://expressjs.com/) with end point:
 - PUT /cars/:id
 - DELETE /cars/:id
 
-input database drom json file
+input database from json file
 
 - databases is json with array of objects
 - unfiltered data
@@ -63,7 +63,7 @@ cars.forEach( (i) => {
 
 ```
 
-Some basic Git commands are:
+filtered data:
 ``` JSON
 [
       {
