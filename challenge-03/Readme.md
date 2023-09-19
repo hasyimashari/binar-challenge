@@ -49,17 +49,7 @@ input database from json file
 
 - filtering data
 ``` JavaScript
-cars.forEach( (i) => {
-    delete i.plate;
-    delete i.manufacture;
-    delete i.model;
-    delete i.transmission;
-    delete i.available;
-    delete i.type;
-    delete i.year;
-    delete i.options;
-    delete i.specs;
-});
+cars.map( ({plate, manufacture, model, transmission, available, type, year, options, specs, ...rest}) => rest)
 
 ```
 
