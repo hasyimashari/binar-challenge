@@ -1,53 +1,61 @@
 const express = require('express');
+const Car = require('./model/cars');
 
 const app = express();
 const PORT = '3000';
 
-app.get('/', (req, res) => {
-    res.status(200).send({ 'message' : "ping succesfully"});
-});
-
-app.get('/cars', (req, res) => {
-    res.status(200).send({ 'array' : "cars"});
-});
-
-app.get('/cars/:id', (req, res) => {
-
-    const idCar = req.params;
-    console.log(idCar)
-
-    res.status(200).send({ 'item' : `car ${idCar['id']}`});
-});
-
 app.use(express.json());
-
-app.post('/cars', (req, res) => {
-
-    const body = req.body;
-    console.log('body', body);
-
-    res.status(200).send({ 'new item' : "new cars"});
-});
-
-app.put('/cars/:id', (req, res) => {
-
-    const idCar = req.params;
-    console.log(idCar)
-
-    const body = req.body;
-    console.log('body', body);
-
-    res.status(200).send({ 'item' : "item updated"});
-});
-
-app.delete('/cars/:id', (req, res) => {
-
-    const idCar = req.params;
-    console.log(idCar)
-
-    res.status(200).send({ 'item' : "item deleted"});
-});
 
 app.listen(PORT, () => {
     console.log(`open http://127.0.0.1:${PORT}`)
-})
+});
+
+// return response message
+app.get('/', (req, res) => {
+    res.status(200).json({ 'message' : "ping succesfully"});
+});
+
+// return list of cars
+app.get('/cars', (req, res) => {
+    const listCars = Car.getListCars();
+
+    res.status(200).json(listCars);
+});
+
+// return one car item
+app.get('/cars/:id', (req, res) => {
+
+    const {id} = req.params;
+    const car = Car.getCar(id); 
+
+    res.status(200).json(car);
+});
+
+// return new car item
+app.post('/cars', (req, res) => {
+
+    const data = req.body;
+    const newCar = Car.createCar(data);
+
+    res.status(200).json(newCar);
+});
+
+// return updated car item
+app.put('/cars/:id', (req, res) => {
+
+    const {id} = req.params;
+    const data = req.body;
+
+    const updatedCar = Car.updateCar(id, data);
+
+    res.status(200).json(updatedCar);
+});
+
+// return deleted cars item
+app.delete('/cars/:id', (req, res) => {
+
+    const {id} = req.params;
+    const deleletedCar = Car.deleteCar(id);
+
+    res.status(200).json(deleletedCar);
+});
