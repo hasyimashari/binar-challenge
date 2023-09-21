@@ -1,5 +1,5 @@
 const express = require('express');
-const Car = require('./model/cars');
+const handler = require('./handler/handler')
 
 const app = express();
 const PORT = '3000';
@@ -11,51 +11,21 @@ app.listen(PORT, () => {
 });
 
 // return response message
-app.get('/', (req, res) => {
-    res.status(200).json({ 'message' : "ping succesfully"});
-});
+app.get('/', handler.pingHandler);
 
 // return list of cars
-app.get('/cars', (req, res) => {
-    const listCars = Car.getListCars();
-
-    res.status(200).json(listCars);
-});
+app.get('/cars', handler.getListCarsHandler);
 
 // return one car item
-app.get('/cars/:id', (req, res) => {
-
-    const {id} = req.params;
-    const car = Car.getCar(id); 
-
-    res.status(200).json(car);
-});
+app.get('/cars/:id', handler.getCarHandler);
 
 // return new car item
-app.post('/cars', (req, res) => {
-
-    const data = req.body;
-    const newCar = Car.createCar(data);
-
-    res.status(200).json(newCar);
-});
+app.post('/cars', handler.createCarHandler);
 
 // return updated car item
-app.put('/cars/:id', (req, res) => {
-
-    const {id} = req.params;
-    const data = req.body;
-
-    const updatedCar = Car.updateCar(id, data);
-
-    res.status(200).json(updatedCar);
-});
+app.put('/cars/:id', handler.updateCarHandler);
 
 // return deleted cars item
-app.delete('/cars/:id', (req, res) => {
+app.delete('/cars/:id', handler.deleteCarHandler);
 
-    const {id} = req.params;
-    const deleletedCar = Car.deleteCar(id);
-
-    res.status(200).json(deleletedCar);
-});
+app.get('*', handler.noRouteHandler)
