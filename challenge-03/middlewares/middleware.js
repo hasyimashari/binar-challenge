@@ -10,9 +10,46 @@ const isAvailMiddleware = (req, res, next) => {
         return;
     }
 
+    req.id = id;
+    next();
+};
+
+const isDataEmpty = (req, res, next) => {
+
+    const {image, rentPerDay, capacity, description, availableAt} = req.body;
+    
+    if ( !image || 
+        !rentPerDay || 
+        !capacity || 
+        !description || 
+        !availableAt) {
+        res.status(400).json({message: "all data cannot empty"});
+        return;
+    }
+
+    req.data = req.body;
+    next();
+};
+
+const isRightType = (req, res, next) => {
+
+    const {image, rentPerDay, capacity, description, availableAt} = req.data;
+    
+    if ( typeof image != "string" || 
+        typeof rentPerDay != "number" ||
+        typeof capacity != "number" || 
+        typeof description != "string" || 
+        typeof availableAt != "string") {
+        res.status(400).json({message: "all data must be in right type"});
+        return;
+    }
+
+    req.payload = req.data;
     next();
 };
 
 module.exports = {
     isAvailMiddleware,
+    isDataEmpty,
+    isRightType,
 };

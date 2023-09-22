@@ -36,17 +36,12 @@ class Car {
     };
 
     static updateCar (id, params) {
-        const updatedCar = this.getCar(id);
 
-        const indexUpdatedCar = this.#listCars.findIndex( (i) => i.id == updatedCar.id);
+        const indexUpdatedCar = this.#listCars.findIndex( (i) => i.id == id);
 
         const updatedCarData = {
             id: id,
-            image : params.image,
-            rentPerDay : params.rentPerDay,
-            capacity : params.capacity,
-            description : params.description,
-            availableAt : params.availableAt,
+            ...params
         };
 
         this.#listCars[indexUpdatedCar] = updatedCarData;

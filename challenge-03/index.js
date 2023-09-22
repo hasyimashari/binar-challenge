@@ -21,10 +21,10 @@ app.get('/cars', handler.getListCarsHandler);
 app.get('/cars/:id', middleware.isAvailMiddleware, handler.getCarHandler);
 
 // return new car item
-app.post('/cars', handler.createCarHandler);
+app.post('/cars', middleware.isDataEmpty, middleware.isRightType, handler.createCarHandler);
 
 // return updated car item
-app.put('/cars/:id', middleware.isAvailMiddleware, handler.updateCarHandler);
+app.put('/cars/:id', middleware.isAvailMiddleware, middleware.isDataEmpty, middleware.isRightType, handler.updateCarHandler);
 
 // return deleted cars item
 app.delete('/cars/:id', middleware.isAvailMiddleware, handler.deleteCarHandler);

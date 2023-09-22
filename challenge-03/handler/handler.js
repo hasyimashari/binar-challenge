@@ -12,34 +12,28 @@ const getListCarsHandler = (req, res) => {
 
 const getCarHandler = (req, res) => {
 
-    const {id} = req.params;
-    const car = Car.getCar(id); 
+    const car = Car.getCar(req.id); 
 
     res.status(200).json(car);
 };
 
 const createCarHandler = (req, res) => {
 
-    const data = req.body;
-    const newCar = Car.createCar(data);
+    const newCar = Car.createCar(req.payload);
 
     res.status(201).json(newCar);
 };
 
 const updateCarHandler = (req, res) => {
 
-    const {id} = req.params;
-    const data = req.body;
-
-    const updatedCar = Car.updateCar(id, data);
+    const updatedCar = Car.updateCar(req.id, req.payload);
 
     res.status(201).json(updatedCar);
 };
 
 const deleteCarHandler = (req, res) => {
 
-    const {id} = req.params;
-    const deleletedCar = Car.deleteCar(id);
+    const deleletedCar = Car.deleteCar(req.id);
 
     res.status(200).json(deleletedCar);
 };
