@@ -1,16 +1,16 @@
 const Car = require('../model/cars');
 
-function pingHandler(req, res) {
+const pingHandler = (req, res) => {
     res.status(200).json({ 'message' : "ping succesfully"});
-}
+};
 
-function getListCarsHandler (req, res) {
+const getListCarsHandler = (req, res) => {
     const listCars = Car.getListCars();
 
     res.status(200).json(listCars);
 };
 
-function getCarHandler (req, res) {
+const getCarHandler = (req, res) => {
 
     const {id} = req.params;
     const car = Car.getCar(id); 
@@ -18,25 +18,25 @@ function getCarHandler (req, res) {
     res.status(200).json(car);
 };
 
-function createCarHandler (req, res) {
+const createCarHandler = (req, res) => {
 
     const data = req.body;
     const newCar = Car.createCar(data);
 
-    res.status(200).json(newCar);
+    res.status(201).json(newCar);
 };
 
-function updateCarHandler (req, res) {
+const updateCarHandler = (req, res) => {
 
     const {id} = req.params;
     const data = req.body;
 
     const updatedCar = Car.updateCar(id, data);
 
-    res.status(200).json(updatedCar);
+    res.status(201).json(updatedCar);
 };
 
-function deleteCarHandler (req, res) {
+const deleteCarHandler = (req, res) => {
 
     const {id} = req.params;
     const deleletedCar = Car.deleteCar(id);
@@ -44,7 +44,7 @@ function deleteCarHandler (req, res) {
     res.status(200).json(deleletedCar);
 };
 
-function noRouteHandler (req, res) {
+const noRouteHandler = (req, res) => {
     res.status(404).json({message: "page not found"})
 };
 

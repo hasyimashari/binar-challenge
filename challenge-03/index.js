@@ -1,5 +1,6 @@
 const express = require('express');
 const handler = require('./handler/handler')
+const middleware = require('./middlewares/middleware')
 
 const app = express();
 const PORT = '3000';
@@ -17,15 +18,15 @@ app.get('/', handler.pingHandler);
 app.get('/cars', handler.getListCarsHandler);
 
 // return one car item
-app.get('/cars/:id', handler.getCarHandler);
+app.get('/cars/:id', middleware.isAvailMiddleware, handler.getCarHandler);
 
 // return new car item
 app.post('/cars', handler.createCarHandler);
 
 // return updated car item
-app.put('/cars/:id', handler.updateCarHandler);
+app.put('/cars/:id', middleware.isAvailMiddleware, handler.updateCarHandler);
 
 // return deleted cars item
-app.delete('/cars/:id', handler.deleteCarHandler);
+app.delete('/cars/:id', middleware.isAvailMiddleware, handler.deleteCarHandler);
 
 app.get('*', handler.noRouteHandler)
