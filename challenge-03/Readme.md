@@ -3,7 +3,8 @@
 # how to run
 - clone this [repository](https://github.com/hasyimashari/binar-challenge.git)
 - go to challenge-03 folder
-- run 'npm run start'
+- install dependecies `npm i`
+- run `npm run start`
 
 # end point
 create an http server with [express js](https://expressjs.com/) with end point:
