@@ -1,12 +1,12 @@
-## challenge 3
+# challenge 3
 
-# how to run
+### how to run
 - clone this [repository](https://github.com/hasyimashari/binar-challenge.git)
 - go to challenge-03 folder
 - install dependecies `npm i`
 - run `npm run start`
 
-# end point
+### end point
 create an http server with [express js](https://expressjs.com/) with end point:
 - GET /
 - GET /cars
@@ -15,10 +15,10 @@ create an http server with [express js](https://expressjs.com/) with end point:
 - PUT /cars/:id
 - DELETE /cars/:id
 
-# postman documentation
+### postman documentation
 - [api documentaion](https://www.postman.com/mission-observer-52095416/workspace/binar-challenge/collection/29693475-74147dde-9da1-4b27-8a90-6543eb1c9b17?action=share&creator=29693475)
 
-# database
+### database
 input database from json file
 - databases is json with array of objects
 - unfiltered data
