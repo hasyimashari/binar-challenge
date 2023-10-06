@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   car.init({
     name: DataTypes.STRING,
-    type: DataTypes.STRING,
+    type: DataTypes.ENUM("small", "medium", "large"),
     image: DataTypes.STRING,
     capacity: DataTypes.INTEGER,
     rentPerDay: DataTypes.INTEGER,

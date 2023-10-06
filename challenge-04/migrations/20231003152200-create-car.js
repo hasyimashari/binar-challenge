@@ -16,7 +16,7 @@ module.exports = {
       },
       type: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.ENUM("small", "medium", "large")
       },
       image: {
         allowNull: false,
