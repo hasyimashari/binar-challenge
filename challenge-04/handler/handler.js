@@ -1,4 +1,3 @@
-const { where } = require("sequelize");
 const {car} = require("../models");
 
 const getPing = (req, res) => {
@@ -21,8 +20,7 @@ const getListCars = async(req, res) => {
 
 const getCar = async(req, res) => {
     try {
-        const {id} = req.params;
-        const data =  await car.findByPk(id);
+        const data = req.carData;
         res.status(200).json({
             message: "get data succeeded",
             data: data});
@@ -53,7 +51,7 @@ const createCar = async(req, res) => {
 
 const updateCar = async(req, res) => {
     try {
-        const {id} = req.params;
+        const {id} = req.carData;
         const newData = req.body;
 
         const [,updatedCar] =  await car.update(newData, {where : {id} ,returning: true});
@@ -72,7 +70,7 @@ const updateCar = async(req, res) => {
 
 const deleteCar = async(req, res) => {
     try {
-        const {id} = req.params;
+        const {id} = req.carData;
         await car.destroy({ where: {id} });
 
         res.status(200).json({
