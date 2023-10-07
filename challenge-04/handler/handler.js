@@ -1,7 +1,9 @@
 const {car} = require("../models");
 
 const getPing = (req, res) => {
-    res.status(200).json({message: "ping succesfully"});
+    res.status(200).json({
+        message: "ping succesfully"
+    });
 };
 
 const getListCars = async(req, res) => {
@@ -23,7 +25,8 @@ const getCar = async(req, res) => {
         const data = req.carData;
         res.status(200).json({
             message: "get data succeeded",
-            data: data});
+            data: data
+        });
 
     } catch(error) {
         res.status(500).json({
@@ -43,14 +46,24 @@ const createCar = async(req, res) => {
         });
 
     } catch(error) {
-        res.status(500).json({
-            error: error.message
-        });
+
+        if (error.name == "SequelizeValidationError") {
+            const errors = error.errors.map(err => err.message);
+            res.status(400).json({
+                error: errors
+            });
+        } else {
+            res.status(500).json({
+                error: error.message
+            });
+        };
+
     };
 };
 
 const updateCar = async(req, res) => {
     try {
+        
         const {id} = req.carData;
         const newData = req.body;
 
@@ -62,9 +75,17 @@ const updateCar = async(req, res) => {
         });
 
     } catch(error) {
-        res.status(500).json({
-            error: error.message
-        });
+
+        if (error.name == "SequelizeValidationError") {
+            const errors = error.errors.map(err => err.message);
+            res.status(400).json({
+                error: errors
+            });
+        } else {
+            res.status(500).json({
+                error: error.message
+            });
+        };
     };
 };
 
@@ -85,7 +106,9 @@ const deleteCar = async(req, res) => {
 };
 
 const notFound = (req, res) => {
-    res.status(404).json({ message: "end point not found or wrong method" })
+    res.status(404).json({
+        message: "end point not found or wrong method" 
+    })
 }
 
 module.exports = {
