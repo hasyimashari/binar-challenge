@@ -1,4 +1,5 @@
 'use strict';
+const { faker } = require('@faker-js/faker');
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -12,42 +13,22 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-
-    return queryInterface.bulkInsert('cars', [
+    
+    const dummCarData = [...Array(25)].map(() => (
       {
-        "name": "BMW M5",
-        "type": "medium",
-        "image": "./images/car04.min.jpg",
-        "rentPerDay": 900000,
-        "capacity": 6,
-        "description": " 6.1L SRT V8 \"Hemi\" engine.",
-        "availableAt": "2022-03-23T15:49:05.563Z",
-        "createdAt": new Date(),
-        "updatedAt": new Date()
-      }, 
-      {
-        "name": "BMW X5",
-        "type": "medium",
-        "image": "./images/car02.min.jpg",
-        "rentPerDay": 800000,
-        "capacity": 6,
-        "description": " Rear passenger map pockets. Electrochromic rearview mirror. Dual chrome exhaust tips. Locking glove box.",
-        "availableAt": "2022-03-23T15:49:05.563Z",
-        "createdAt": new Date(),
-        "updatedAt": new Date()
-      }, 
-      {
-        "name": "Lincoln MKZ",
-        "type": "medium", 
-        "image": "./images/car03.min.jpg",
-        "rentPerDay": 900000,
-        "capacity": 6,
-        "description": " Driver & front passenger map pockets. Direct-type tire pressure monitor system. Cargo area lamp. Glove box lamp.",
-        "availableAt": "2022-03-23T15:49:05.563Z",
+        "name": `${faker.vehicle.manufacturer()} ${faker.vehicle.model()}`,
+        "type": faker.helpers.arrayElement(['small', 'medium', 'large']),
+        "image": faker.image.url(),
+        "rentPerDay": faker.number.bigInt({min: 10000, max:1000000}),
+        "capacity": faker.number.int({min:2 ,max: 8}),
+        "description": faker.lorem.sentence({ min: 5, max: 10 }),
+        "availableAt": faker.date.soon(),
         "createdAt": new Date(),
         "updatedAt": new Date()
       }
-    ], {})
+    ));
+
+    return queryInterface.bulkInsert('cars', dummCarData, {})
   },
 
   async down (queryInterface, Sequelize) {
