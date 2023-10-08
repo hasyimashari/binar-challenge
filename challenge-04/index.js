@@ -1,9 +1,3 @@
-
-// ! to do:
-// * remove middleware
-// * use real image
-// * generate random data
-
 const express = require('express');
 const handler = require('./handler/handler');
 const middleware = require('./middleware/middlware');

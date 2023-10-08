@@ -11,6 +11,7 @@ const isAvailable = async(req, res, next) => {
             res.status(404).json({ 
                 message: "car id not found" 
             });
+            return;
         };
     
         req.carData = carData;
