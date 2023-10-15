@@ -1,4 +1,4 @@
-const {car} = require("../models");
+const { car } = require("../../models");
 
 const getPing = (req, res) => {
     res.status(200).json({
@@ -6,21 +6,22 @@ const getPing = (req, res) => {
     });
 };
 
-const getListCars = async(req, res) => {
+const getListCars = async (req, res) => {
     try {
-        const data =  await car.findAll();
+        const data = await car.findAll();
         res.status(200).json({
             message: "get data succeeded",
-            data: data});
+            data: data
+        });
 
-    } catch(error) {
+    } catch (error) {
         res.status(500).json({
             error: error.message
         });
     };
 };
 
-const getCar = async(req, res) => {
+const getCar = async (req, res) => {
     try {
         const data = req.carData;
         res.status(200).json({
@@ -28,24 +29,24 @@ const getCar = async(req, res) => {
             data: data
         });
 
-    } catch(error) {
+    } catch (error) {
         res.status(500).json({
             error: error.message
         });
     };
 };
 
-const createCar = async(req, res) => {
+const createCar = async (req, res) => {
     try {
         const newData = req.body;
-        const newCar =  await car.create(newData);
+        const newCar = await car.create(newData);
 
         res.status(201).json({
             message: "new data successfully created",
             newData: newCar
         });
 
-    } catch(error) {
+    } catch (error) {
 
         if (error.name == "SequelizeValidationError") {
             const errors = error.errors.map(err => err.message);
@@ -61,20 +62,20 @@ const createCar = async(req, res) => {
     };
 };
 
-const updateCar = async(req, res) => {
+const updateCar = async (req, res) => {
     try {
-        
-        const {id} = req.carData;
+
+        const { id } = req.carData;
         const newData = req.body;
 
-        const [,updatedCar] =  await car.update(newData, {where : {id} ,returning: true});
+        const [, updatedCar] = await car.update(newData, { where: { id }, returning: true });
 
         res.status(201).json({
             message: "data successfully updated",
             newData: updatedCar
         });
 
-    } catch(error) {
+    } catch (error) {
 
         if (error.name == "SequelizeValidationError") {
             const errors = error.errors.map(err => err.message);
@@ -89,16 +90,16 @@ const updateCar = async(req, res) => {
     };
 };
 
-const deleteCar = async(req, res) => {
+const deleteCar = async (req, res) => {
     try {
-        const {id} = req.carData;
-        await car.destroy({ where: {id} });
+        const { id } = req.carData;
+        await car.destroy({ where: { id } });
 
         res.status(200).json({
             message: "data successfully deleted"
         });
 
-    } catch(error) {
+    } catch (error) {
         res.status(500).json({
             error: error.message
         });
@@ -107,7 +108,7 @@ const deleteCar = async(req, res) => {
 
 const notFound = (req, res) => {
     res.status(404).json({
-        message: "end point not found or wrong method" 
+        message: "end point not found or wrong method"
     })
 }
 
