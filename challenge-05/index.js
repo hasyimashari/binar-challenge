@@ -1,6 +1,6 @@
 const express = require('express');
-const handler = require('./handler/handler');
-const middleware = require('./middleware/middlware');
+const handler = require('./app/controllers/handler/handler');
+const middleware = require('./app/controllers/middleware/middlware');
 
 const app = express();
 const PORT = '3000';
