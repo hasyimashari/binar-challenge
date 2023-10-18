@@ -1,4 +1,4 @@
-const { car } = require("../../models");
+const { car } = require('../models');
 
 const findAllCar = () => {
     return car.findAll();
