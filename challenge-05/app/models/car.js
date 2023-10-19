@@ -82,6 +82,9 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notNull: {
           msg: "available date is required"
+        },
+        isDate: {
+          msg: "available at must be in date"
         }
       }
     }
