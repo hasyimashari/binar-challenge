@@ -5,7 +5,7 @@ const createUser = async(req, res) => {
 
     try {
         const payload = req.body;
-        const data = await userServices.createUser(payload);
+        const data = await userServices.createUser(payload, req.user? true : false);
 
         res.status(201).json({
             status: 'OK',

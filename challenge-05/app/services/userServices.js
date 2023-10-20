@@ -2,7 +2,7 @@ const applicationError = require('../../config/error/applicationError');
 const userRepositories = require('../repositories/userRepositories');
 const authServices = require('./authServices');
 
-const createUser = async(payload) => {
+const createUser = async(payload, isAdmin) => {
 
     try {
         const {password} = payload;
@@ -14,6 +14,7 @@ const createUser = async(payload) => {
 
         const encryptedPayload = {
             encryptedPassword,
+            role: isAdmin? 'admin' : 'member',
             ...payload
         }
         const newUser = await userRepositories.createUser(encryptedPayload);
@@ -60,14 +61,17 @@ const isUserPwRight = async(credentilas, user) => {
 
     try {
         const {password} = credentilas;
-        const {encryptedPassword} = user;
+        const {id, encryptedPassword} = user;
 
         const isRightPw = await authServices.comparePassword(password, encryptedPassword);
         if (!isRightPw) {
             throw new applicationError('wrong password', 400);
         };
 
-        return user;
+        const token = authServices.createToken({ id });
+        const userWithToken = {...user.dataValues, token};
+
+        return userWithToken;
 
     } catch (err) {
         throw new applicationError(`Failed to login : ${err.message}`, err.statusCode || 500);
