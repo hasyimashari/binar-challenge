@@ -30,14 +30,20 @@ const createUser = async(payload) => {
     };
 };
 
+const isCredentialsNull = (credentials) => {
+
+    const {email, password} = credentials;
+    if (!email || !password) {
+        throw new applicationError('Failed to login: email and password are required', 400)
+    };
+
+    return credentials;
+};
+
 const findUserByEmail = async(credentilas) => {
 
     try {
         const {email} = credentilas;
-        if (!email) {
-            throw new applicationError('email is required', 400);
-        };
-
         const user = await userRepositories.findUserByEmail(email);
 
         if (!user) {
@@ -46,7 +52,7 @@ const findUserByEmail = async(credentilas) => {
         return user;
 
     } catch (err) {
-        throw new applicationError(`Failed to get user information : ${err.message}`, err.statusCode || 500);
+        throw new applicationError(`Failed to login : ${err.message}`, err.statusCode || 500);
     };
 };
 
@@ -54,10 +60,6 @@ const isUserPwRight = async(credentilas, user) => {
 
     try {
         const {password} = credentilas;
-        if (!password) {
-            throw new applicationError('password is required', 400);
-        };
-
         const {encryptedPassword} = user;
 
         const isRightPw = await authServices.comparePassword(password, encryptedPassword);
@@ -68,13 +70,14 @@ const isUserPwRight = async(credentilas, user) => {
         return user;
 
     } catch (err) {
-        throw new applicationError(`Failed to validate password : ${err.message}`, err.statusCode || 500);
+        throw new applicationError(`Failed to login : ${err.message}`, err.statusCode || 500);
     };
 
 }
 
 module.exports = {
     createUser,
+    isCredentialsNull,
     findUserByEmail,
     isUserPwRight,
 }
