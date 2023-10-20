@@ -2,6 +2,9 @@ const express = require('express');
 const carController = require('./app/controllers/carControllers');
 const carMiddleware = require('./app/middleware/carMiddlware');
 
+const userController = require('./app/controllers/userController');
+const userMiddleware = require('./app/middleware/userMiddleware'); 
+
 const app = express();
 const PORT = '3000';
 
@@ -17,5 +20,8 @@ app.get('/cars/:id', carMiddleware.isAvailable, carController.getCar);
 app.post('/cars', carController.createCar);
 app.put('/cars/:id', carMiddleware.isAvailable, carController.updateCar);
 app.delete('/cars/:id', carMiddleware.isAvailable, carController.deleteCar);
+
+app.post('/register', userController.createUser);
+app.post('/login', userMiddleware.isUserFoundByEmail, userController.userLogin);
 
 app.all('*', carController.notFound);
