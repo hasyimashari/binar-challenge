@@ -28,10 +28,10 @@ const getCarByID = async(id) => {
     }
 };
 
-const createCar = async(payload) => {
+const createCar = async(payload, adminId) => {
 
     try {
-        const newCar = await carRepostiories.createCar(payload);
+        const newCar = await carRepostiories.createCar(payload, adminId);
         return newCar;
 
     } catch (err) {
@@ -44,10 +44,10 @@ const createCar = async(payload) => {
     }
 };
 
-const updateCar = async(newData, id) => {
+const updateCar = async(newData, id, adminId) => {
 
     try {
-        const [, updatedCar] = await carRepostiories.updateCar(newData, id)
+        const [, updatedCar] = await carRepostiories.updateCar(newData, id, adminId)
         return updatedCar;
 
     } catch (err) {
@@ -60,10 +60,12 @@ const updateCar = async(newData, id) => {
     };
 };
 
-const deleteCar = async(id) => {
+const deleteCar = async(id, adminId) => {
 
     try {
-        return await carRepostiories.deleteCar(id);
+        await carRepostiories.deleteCar(id);
+        const [, deletedCar] = await carRepostiories.updateCarafterDelete(id, adminId);
+        return deletedCar;
 
     } catch (err) {
         throw new applicationError(`Failed to delete car: ${err.message}`, 500);

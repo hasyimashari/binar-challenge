@@ -25,6 +25,26 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date()
       },
+      {
+        name: "super admin 2",
+        email: "super@admin2.com",
+        encryptedPassword: bcrypt.hashSync("super_admin222", 10),
+        phone: "085880880880",
+        addres: "kediri",
+        role: "superadmin",
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: "super admin 3",
+        email: "super@admin3.com",
+        encryptedPassword: bcrypt.hashSync("super_admin333", 10),
+        phone: "085880880880",
+        addres: "kediri",
+        role: "superadmin",
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
     ], {});
   },
 

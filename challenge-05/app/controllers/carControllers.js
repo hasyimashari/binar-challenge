@@ -1,12 +1,5 @@
 const carServices = require('../services/carServices')
 
-const getPing = (req, res) => {
-    res.status(200).json({
-        status: "OK",
-        message: "ping succesfully"
-    });
-};
-
 const getListCars = async (req, res) => {
 
     try {
@@ -48,7 +41,9 @@ const getCar = async (req, res) => {
 const createCar = async (req, res) => {
     try {
         const payload = req.body;
-        const data = await carServices.createCar(payload);
+        const {id: adminId} = req.user;
+
+        const data = await carServices.createCar(payload, adminId);
 
         res.status(201).json({
             status: 'OK',
@@ -68,9 +63,10 @@ const updateCar = async (req, res) => {
     try {
 
         const { id } = req.carData;
+        const {id: adminId} = req.user;
         const newData = req.body;
 
-        const data = await carServices.updateCar(newData, id);
+        const data = await carServices.updateCar(newData, id, adminId);
 
         res.status(201).json({
             satus: 'OK',
@@ -89,11 +85,14 @@ const updateCar = async (req, res) => {
 const deleteCar = async (req, res) => {
     try {
         const { id } = req.carData;
-        await carServices.deleteCar(id);
+        const {id: adminId} = req.user;
+
+        const data = await carServices.deleteCar(id, adminId);
 
         res.status(200).json({
             staus: 'OK',
-            message: "data successfully deleted"
+            message: "data successfully deleted",
+            data
         });
 
     } catch (err) {
@@ -104,18 +103,10 @@ const deleteCar = async (req, res) => {
     };
 };
 
-const notFound = (req, res) => {
-    res.status(404).json({
-        message: "end point not found or wrong method"
-    })
-}
-
 module.exports = {
-    getPing,
     getListCars,
     getCar,
     createCar,
     updateCar,
-    deleteCar,
-    notFound,
+    deleteCar
 }

@@ -1,5 +1,6 @@
 'use strict';
 const { faker } = require('@faker-js/faker');
+const { user } = require('../../app/models')
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -13,7 +14,13 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    
+
+    const getRandomUser = await user.findOne({
+      where: {role: 'superadmin'},
+      order: Sequelize.literal('random()') 
+    });
+    const randomID = getRandomUser.dataValues.id;
+
     const dummCarData = [...Array(25)].map(() => (
       {
         "name": `${faker.vehicle.manufacturer()} ${faker.vehicle.model()}`,
@@ -24,7 +31,8 @@ module.exports = {
         "description": faker.lorem.sentence({ min: 5, max: 10 }),
         "availableAt": faker.date.soon(),
         "createdAt": new Date(),
-        "updatedAt": new Date()
+        "updatedAt": new Date(),
+        "createdBy" : randomID
       }
     ));
 
