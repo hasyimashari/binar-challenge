@@ -1,4 +1,3 @@
-const applicationError = require('../../config/error/applicationError');
 const userServices = require('../services/userServices');
 
 const createUser = async(req, res) => {
@@ -42,7 +41,19 @@ const userLogin = async(req, res) => {
     };
 };
 
+const userRightNow = (req, res) => {
+
+    const {user} = req;
+
+    res.status(200).json({
+        status: 'OK',
+        message: 'get user data success',
+        data: user
+    });
+};
+
 module.exports = {
     createUser,
     userLogin,
+    userRightNow,
 }
