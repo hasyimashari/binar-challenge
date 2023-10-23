@@ -1,4 +1,5 @@
 const express = require('express');
+const swaggerUi = require('swagger-ui-express');
 const carController = require('./app/controllers/carControllers');
 const carMiddleware = require('./app/middleware/carMiddlware');
 
@@ -8,6 +9,8 @@ const authMiddleware = require('./app/middleware/authMiddleware');
 
 const app = express();
 const PORT = '3000';
+
+const swaggerDocument = require('./docs/openapi.json')
 
 app.use(express.json());
 
@@ -21,6 +24,8 @@ app.get('/api', (req, res) => {
         message: "ping succesfully"
     });
 });
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.get('/api/cars', authMiddleware.isAuthorized, carController.getListCars);
 app.get('/api/cars/:id', authMiddleware.isAuthorized, carMiddleware.isAvailable, carController.getCar);
