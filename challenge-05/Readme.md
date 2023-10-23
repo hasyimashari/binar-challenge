@@ -11,7 +11,7 @@ simple car rest api with authentication and connect to database
 ![ERD](./db/erd/cars_05_erd.png)
 
 ### documentation
-- swagger documentation
+- swagger documentation (hit end point after server running)
 ```
 http://127.0.0.1:3000/api-docs or {{host}}/api-docs
 ```
@@ -65,15 +65,15 @@ npm run dev
 - super admin credentials
 ```json
     {
-        email: "super@admin3.com",
-        encryptedPassword: "super_admin333"
+        "email" : "super@admin3.com",
+        "encryptedPassword" : "super_admin333"
     },
     {
-        email: "super@admin2.com",
-        encryptedPassword: "super_admin222"
+        "email" : "super@admin2.com",
+        "encryptedPassword" : "super_admin222"
     },
     {
-        email: "super@admin1.com",
-        encryptedPassword: "super_admin111"
+        "email" : "super@admin1.com",
+        "encryptedPassword" : "super_admin111"
     }
 ```
