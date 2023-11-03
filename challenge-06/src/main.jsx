@@ -4,9 +4,12 @@ import { RouterProvider } from 'react-router-dom'
 
 import './index.css'
 import router from './Router'
+import CarContextProvider from './context/CarContext'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router}/>
+    <CarContextProvider>
+      <RouterProvider router={router}/>
+    </CarContextProvider>
   </React.StrictMode>,
 )
