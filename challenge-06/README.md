@@ -1,8 +1,40 @@
-# React + Vite
+# Challenge-6
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Replicate design with React Js and implemented React Context and intregate with BE (fetc data). i replicate the design without make it responsive and the carousele and accordion are not working.
 
-Currently, two official plugins are available:
+### tech stack
+- [react js](https://react.dev/)
+- [vite](https://vitejs.dev/)
+- [tailwind css](https://tailwindcss.com/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### end point
+- landing page 
+```
+/
+```
+
+- serach car page
+```
+/cars
+```
+
+### how to run
+- clone this repository
+```bash
+git clone "https://github.com/hasyimashari/binar-challenge.git"
+```
+
+- change directory into "challenge-04"
+```shell
+cd "challenge-06"
+```
+
+- install dependecies
+```shell
+npm i
+```
+
+- start server
+```shell
+npm run dev
+```
