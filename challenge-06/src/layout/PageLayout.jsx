@@ -10,11 +10,12 @@ import logo from '../icon/logo.png'
 import Button from '../components/Button'
 
 export default function PageLayout() {
+
   return (
     <>
       <div className='bg-[#F1F3FF]'>
         <header className='mx-20 py-4 flex justify-between'>
-          <a href="#">
+          <a href={'/'}>
             <img src={logo} alt="" />
           </a>
 
