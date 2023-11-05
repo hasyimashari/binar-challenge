@@ -4,14 +4,14 @@ export const CarContext = createContext();
 
 const CarContextProvider = (props) => {
 
-  const [cars, setCars_] = useState([])
+  const [cars, _setCars] = useState([])
 
   // default funtion from challenge 2
   const  getRandomInt = (min, max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
+  };
 
   // default funtion from challenge 2
   const populateCars = (cars) => {
@@ -25,39 +25,39 @@ const CarContextProvider = (props) => {
         ...car,
         availableAt,
       };
-    })
-  }
+    });
+  };
 
   const getCars = async() => {
     try {
-      const data = await fetch("https://raw.githubusercontent.com/fnurhidayat/probable-garbanzo/main/data/cars.json")
-      return data.json()
+      const data = await fetch("https://raw.githubusercontent.com/fnurhidayat/probable-garbanzo/main/data/cars.json");
+      return data.json();
 
     } catch (error) {
-      console.log(error.message)
-    }
-  }
+      console.log(error.message);
+    };
+  };
 
   const setCars = async() => {
     try {
-      const carsData = await getCars()
-      const populatedCarsData = populateCars(carsData)
+      const carsData = await getCars();
+      const populatedCarsData = populateCars(carsData);
 
-      setCars_(populatedCarsData)
+      _setCars(populatedCarsData);
 
     } catch (error) {
-      console.log(error.message)
+      console.log(error.message);
     }
   }
 
   return (
     <CarContext.Provider value={{
       cars,
-      setCars
+      setCars,
     }}>
       {props.children}
     </CarContext.Provider>
   )
-}
+};
 
 export default CarContextProvider;
