@@ -106,6 +106,7 @@ export default function SearchCarPage() {
               name="jumlah-penumpang" 
               id="jumlah-penumpang" 
               type="number" 
+              min={0}
               placeholder="Jumlah Penumpang" 
               onChange={(e) => setCapaity(e.target.value)}
               className='p-0.5 border-2 rounded' />
