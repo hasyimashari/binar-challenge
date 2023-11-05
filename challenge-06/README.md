@@ -24,7 +24,7 @@ Replicate design with React Js and implemented React Context and intregate with 
 git clone "https://github.com/hasyimashari/binar-challenge.git"
 ```
 
-- change directory into "challenge-04"
+- change directory into "challenge-06"
 ```shell
 cd "challenge-06"
 ```
