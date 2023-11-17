@@ -1,0 +1,24 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es2021": true
+    },
+    "extends": "standard",
+    "parserOptions": {
+        "ecmaVersion": "latest"
+    },
+    "rules": {
+        "camelcase": [
+            "warn"
+        ],
+        "indent" : [
+            "warn", 2
+        ],
+        "no-unused-vars" : "warn",
+        "no-undef" : "off",
+        "quotes" : [
+            "warn", "single"
+        ]
+    }
+}
