@@ -1,1 +1,3 @@
 node_modules/
+/challenge-07/.env
+/challenge-07/coverage
