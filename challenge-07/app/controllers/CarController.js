@@ -99,23 +99,25 @@ class CarController extends ApplicationController {
   handleUpdateCar = async (req, res) => {
     try {
       const {
+        id,
         name,
         price,
         size,
         image
-      } = req.body
+      } = this.getCarFromRequest(req)
 
-      const car = this.getCarFromRequest(req)
-
-      await car.update({
+      const updatedCar = await this.carModel.update({
         name,
         price,
         size,
         image,
         isCurrentlyRented: false
+      }, {
+        where: { id },
+        returning: true
       })
 
-      res.status(200).json(car)
+      res.status(200).json(updatedCar)
     } catch (err) {
       res.status(422).json({
         error: {
