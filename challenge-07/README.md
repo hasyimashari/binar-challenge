@@ -9,7 +9,7 @@ note: There is some code that may not work
 - [railway.app](https://railway.app/)
 
 ### deployment url
-- [active url](prod-bcr-api.up.railway.app)
+- [active url](https://prod-bcr-api.up.railway.app)
 
 ### deployment api documentation
 - [api docs](https://prod-bcr-api.up.railway.app/documentation/)
