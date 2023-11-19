@@ -1,12 +1,40 @@
-const ApplicationController = require('./ApplicationController')
+const ApplicationController = require('../ApplicationController')
 const applicationController = new ApplicationController()
 
 describe('ApplicationController', () => {
+  describe('#getOffsetFromRequest', () => {
+    it('Should return offset', () => {
+      const mockRequest = {
+        query: { }
+      }
+
+      const offset = applicationController.getOffsetFromRequest(mockRequest)
+
+      expect(offset).toStrictEqual(0)
+    })
+  })
+
+  describe('#buildPaginationObject', () => {
+    it('Should return pagination object', () => {
+      const mockRequest = {
+        query: { }
+      }
+
+      const mockCount = 10
+
+      const objePagination = applicationController.buildPaginationObject(mockRequest, mockCount)
+      expect(objePagination).toStrictEqual({
+        page: 1,
+        pageSize: 10,
+        count: 10,
+        pageCount: 1
+      })
+    })
+  })
+
   describe('#handleGetRoot', () => {
     it('Should return success to connect', () => {
-      const mockRequest = {
-
-      }
+      const mockRequest = jest.fn()
 
       const mockResponse = {
         status: jest.fn().mockReturnThis(),
@@ -52,65 +80,27 @@ describe('ApplicationController', () => {
 
   describe('#handleError', () => {
     it('Should return error', () => {
-      const mockError = {
-        name: 'mock error',
-        message: 'mock error',
-        details: 'mock error'
-      }
-
-      const mockRequest = {
-
-      }
+      const mockRequest = jest.fn()
 
       const mockResponse = {
         status: jest.fn().mockReturnThis(),
         json: jest.fn().mockReturnThis()
       }
 
-      const mockNext = {
+      const mockNext = jest.fn()
 
+      const mockError = {
+        name: 'mock error',
+        message: 'mock error'
       }
 
       applicationController.handleError(mockError, mockRequest, mockResponse, mockNext)
       expect(mockResponse.status).toHaveBeenCalledWith(500)
       expect(mockResponse.json).toHaveBeenCalledWith({
-        error: mockError
-      })
-    })
-  })
-
-  describe('#getOffsetFromRequest', () => {
-    it('Should return offset', () => {
-      const mockRequest = {
-        query: {
-          page: 1,
-          pageSize: 10
+        error: {
+          ...mockError,
+          details: null
         }
-      }
-
-      const offset = applicationController.getOffsetFromRequest(mockRequest)
-
-      expect(offset).toBe(0)
-    })
-  })
-
-  describe('#buildPaginationObject', () => {
-    it('Should return pagination object', () => {
-      const mockRequest = {
-        query: {
-          page: 1,
-          pageSize: 10
-        }
-      }
-
-      const mockCount = 10
-
-      const objePagination = applicationController.buildPaginationObject(mockRequest, mockCount)
-      expect(objePagination).toStrictEqual({
-        page: 1,
-        pageSize: 10,
-        count: 10,
-        pageCount: 1
       })
     })
   })

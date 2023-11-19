@@ -1,4 +1,4 @@
-const CarController = require('./CarController')
+const CarController = require('../CarController')
 
 const mockCarModel = {
   create: jest.fn(),
@@ -65,7 +65,7 @@ describe('CarController', () => {
         },
         limit: 10,
         offset: 0,
-        where: {}
+        where: { }
       })
     })
   })
@@ -181,7 +181,7 @@ describe('CarController', () => {
       expect(mockResponse.json).toHaveBeenCalledWith(mockNewCarData)
     })
 
-    it('Should return an error', async () => {
+    it('Should return an error for creating data', async () => {
       const mockRequest = {
         body: { }
       }
@@ -222,7 +222,7 @@ describe('CarController', () => {
         userId: 1,
         carId: 1,
         rentStartedAt: new Date(),
-        rentEndedAt: new Date()
+        rentEndedAt: ''
       }
 
       const mockNewUserCarData = {
@@ -247,6 +247,8 @@ describe('CarController', () => {
         json: jest.fn().mockReturnThis()
       }
 
+      carController.dayjs = jest.fn().mockReturnValue(new Date())
+
       carController.getCarFromRequest = jest.fn().mockReturnValue(mockCarData)
 
       mockUserCarModel.findOne.mockResolvedValue(mockUserCarData)
@@ -258,7 +260,7 @@ describe('CarController', () => {
       expect(mockResponse.json).toHaveBeenCalledWith(mockNewUserCarData)
     })
 
-    it('Should return an error', async () => {
+    it('Should return an car already rented error', async () => {
       const mockCarData = {
         id: 1,
         name: 'mock car',
@@ -286,7 +288,7 @@ describe('CarController', () => {
 
       carController.getCarFromRequest = jest.fn().mockReturnValue(mockCarData)
 
-      mockUserCarModel.findOne.mockResolvedValue(null)
+      mockUserCarModel.findOne.mockResolvedValue()
 
       await carController.handleRentCar(mockRequest, mockResponse, jest.fn())
 
@@ -329,7 +331,7 @@ describe('CarController', () => {
       expect(mockResponse.json).toHaveBeenCalledWith(mockUpdatedCarData)
     })
 
-    it('Should return an error', async () => {
+    it('Should return an error for updating car', async () => {
       const mockCarData = {
         name: 'mock car',
         price: 'mock car',

@@ -1,4 +1,4 @@
-const AuthenticationController = require('./AuthenticationController')
+const AuthenticationController = require('../AuthenticationController')
 
 const mockUserModel = {
   findOne: jest.fn(),
