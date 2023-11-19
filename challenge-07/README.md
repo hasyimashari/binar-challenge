@@ -11,5 +11,5 @@ note: There is some code that may not work
 ### deployment url
 - [active url](prod-bcr-api.up.railway.app)
 
-### deploment api documentation
+### deployment api documentation
 - [api docs](https://prod-bcr-api.up.railway.app/documentation/)
