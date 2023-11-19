@@ -1,9 +1,15 @@
-# BCR API
+# challenge 7
+creat test for existing code and intregating them with eslint, deploy the code after that. I use esLint standard configuration and deploy the code in railway.app.
 
-Di dalam repository ini terdapat implementasi API dari Binar Car Rental.
-Tugas kalian disini adalah:
-1. Fork repository
-2. Tulis unit test di dalam repository ini menggunakan `jest`.
-3. Coverage minimal 70%
+note: There is some code that may not work
 
-Good luck!
+### tech stack
+- [esLint](https://eslint.org/)
+- [jest](https://jestjs.io/)
+- [railway.app](https://railway.app/)
+
+### deployment url
+- [active url](prod-bcr-api.up.railway.app)
+
+### deploment api documentation
+- [api docs](https://prod-bcr-api.up.railway.app/documentation/)
