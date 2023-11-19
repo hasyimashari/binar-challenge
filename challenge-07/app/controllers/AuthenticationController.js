@@ -1,7 +1,8 @@
 const ApplicationController = require('./ApplicationController')
-const { EmailNotRegisteredError, InsufficientAccessError, RecordNotFoundError, WrongPasswordError } = require('../errors')
+const { EmailNotRegisteredError, InsufficientAccessError, WrongPasswordError } = require('../errors')
 const { JWT_SIGNATURE_KEY } = require('../../config/application')
 const EmailAlreadyTakenError = require('../errors/EmailAlreadyTakenError')
+const RecordNotFoundError = require('../errors/RecordNotFoundError')
 
 class AuthenticationController extends ApplicationController {
   constructor ({
@@ -118,7 +119,7 @@ class AuthenticationController extends ApplicationController {
     const user = await this.userModel.findByPk(req.user.id)
 
     if (!user) {
-      const err = new RecordNotFoundError(this.userModel.name)
+      const err = new RecordNotFoundError(req.user.id)
       res.status(404).json(err)
       return
     }
@@ -126,7 +127,7 @@ class AuthenticationController extends ApplicationController {
     const role = await this.roleModel.findByPk(user.roleId)
 
     if (!role) {
-      const err = new RecordNotFoundError(this.roleModel.name)
+      const err = new RecordNotFoundError(user.roleId)
       res.status(404).json(err)
       return
     }
